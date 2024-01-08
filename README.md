@@ -81,7 +81,8 @@ To train the 2D Heatmap Estimation Module based on Resnet101 Architecture, run:
 ```
 python train.py --training_type train2d --gpu {gpu id} --log_dir {experiments/Train2d} 
 ```
-Training is done for 3 Epochs and approximately takes ~2 hours on a single 3090 GPU. 
+Training is done for 3 Epochs, 7.0GB of VRAM is needed for training.
+On a single 3090 GPU, training takes approximately 30-40 minutes per epoch. 
 
 You can also download the pretrained checkpoint from this [link](https://drive.google.com/drive/folders/1vAmK83MO3UvVd52OQ3X6G8gPQhClZHL0?usp=sharing). The checkpoint is located under *Train2d* folder. 
 
@@ -92,7 +93,8 @@ To train the 3D Lifting Module, run:
 ```
 python train.py --training_type train3d --gpu {gpu id} --log_dir {experiments/Train3d}
 ```
-Training is done for 3 Epochs and approximately takes ~2 hours on a single 3090 GPU. 
+Training is done for 3 Epochs, 3.0GB of VRAM is needed for training.
+On a single 3090 GPU, training takes approximately 25-35 minutes per epoch. 
 
 You can also download the pretrained checkpoint from this [link](https://drive.google.com/drive/folders/1vAmK83MO3UvVd52OQ3X6G8gPQhClZHL0?usp=sharing). The checkpoint is located under *Train3d* folder. 
 
@@ -100,8 +102,19 @@ You can also download the pretrained checkpoint from this [link](https://drive.g
 
 To finetune the 2D Heatmap and 3D Lifting Module into a single model, run: 
 ```
-python train.py --training_type finetune --gpu {gpu id} --log_dir {experiments/Finetune} --load_2d_model {path to trained 2D Heatmap Module} --load_3d_model {poath to trained 3D Pose Lifting Module}
+python train.py --training_type finetune --gpu {gpu id} --log_dir {experiments/Finetune} --load_2d_model {path to trained 2D Heatmap Module} --load_3d_model {path to trained 3D Pose Lifting Module}
 ```
-Training is done for 3 Epochs and approximately takes ~2 hours on a single 3090 GPU. 
+Training is done for 3 Epochs, 10GB of VRAM is needed for training. 
+On a single 3090 GPU, training takes approximately 40 minutes per epoch. 
 
 You can also download the pretrained checkpoint from this [link](https://drive.google.com/drive/folders/1vAmK83MO3UvVd52OQ3X6G8gPQhClZHL0?usp=sharing). The checkpoint is located under *Finetune* folder. 
+
+## Evaluation: Demo on the Test Dataset
+
+In order to qualitatively and quantitavely evaluate the performance of the model, run the demo:
+```
+python demo.py --gpu {gpu id} --load_model {path to trained finetuned model} --data{type of data to test on: train, test, val} --save_dir {path of output folder of visualizations}
+```
+
+Make sure to load the finetuned model as model path. The default data is set to the testing set. 
+The visualization includes the original image with the overlay of predicted 3d joints in orange and the ground truth 3d joints in blue. 

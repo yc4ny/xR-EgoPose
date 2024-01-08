@@ -271,7 +271,7 @@ def main():
             eval_lower = evaluate.EvalLowerBody()
             autoencoder.train()
 
-            for it, (img, p2d, p3d, heatmap, action) in enumerate(train_data_loader, start = 0 ):
+            for it, (img, p2d, p3d, heatmap, action) in enumerate(tqdm(train_data_loader), start = 0 ):
                 img = img.to(device)
                 p3d = p3d.to(device)
                 heatmap = heatmap.to(device)
@@ -316,7 +316,7 @@ def main():
             resnet.train()
             autoencoder.train()
             
-            for it, (img, p2d, p3d, heatmap, action) in enumerate(train_data_loader, 0):
+            for it, (img, p2d, p3d, heatmap, action) in enumerate(tqdm(train_data_loader), 0):
                 img = img.to(device)
                 p3d = p3d.to(device)
                 heatmap = heatmap.to(device)
