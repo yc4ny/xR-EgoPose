@@ -5,52 +5,11 @@ The *x*R-EgoPose Dataset has been introduced in the paper ["*x*R-EgoPose: Egocen
 ![img](doc/teaser.jpg)
 
 
-The code contained in this repository is a PyTorch implementation of the data loader with additional evaluation functions for comparison.
+The code contained in this repository is a PyTorch implementation of training and inference code of the model. 
 
-## Citation
+## Downloading the *x*R-EgoPose Dataset
 
-```
-@inproceedings{tome2019xr,
-  title={xR-EgoPose: Egocentric 3D Human Pose from an HMD Camera},
-  author={Tome, Denis and Peluse, Patrick and Agapito, Lourdes and Badino, Hernan},
-  booktitle={Proceedings of the IEEE International Conference on Computer Vision},
-  pages={7728--7738},
-  year={2019}
-}
-@ARTICLE{tome2020self,
-  author={D. {Tome} and T. {Alldieck} and P. {Peluse} and G. {Pons-Moll} and L. {Agapito} and H. {Badino} and F. {De la Torre}},
-  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
-  title={SelfPose: 3D Egocentric Pose Estimation from a Headset Mounted Camera},
-  year={2020},
-  volume={},
-  number={},
-  pages={1-1},
-  doi={10.1109/TPAMI.2020.3029700}
-}
-```
-
-The license agreement for the data usage implies citation of the paper. Please notice that citing the dataset URL instead of the publication would not be compliant with this license agreement.
-
-## Download on Mac OS and Linux
-
-Make sure pigz and wget are installed:
-```
-# on Mac OS
-brew install wget pigz
-# on Ubuntu
-sudo apt-get install pigz
-```
-
-To download and decompress the dataset use the download.sh script:
-```
-./download.sh
-```
-
-which will dowload and set-up the dataset folder for training and testing the model.
-Make sure to have **~1TB free space** for storing the data.
-After that, run ```demo.py```. This shows how to load and evaluate the model.
-
-## *x*R-EgoPose Dataset
+Download the official data set from the [official repository](https://github.com/facebookresearch/xR-EgoPose/releases/tag/v1.0)
 
 Character names in the dataset follow the convention **gender**\_**id**\_**body-type**\_**height**
 
@@ -113,41 +72,3 @@ Frame information is organized in different folders, each containing one file pe
 - worldp: world position per pixel
 
 ### Actions
-
-A set of nine broad action categories have been included in the dataset
-
-| Action Name |
-|-------------|
-| Gaming |
-| Gesticulating |
-| Greeting |
-| Lower Stretching |
-| Patting |
-| Reacting |
-| Talking |
-| Upper Stretching |
-| Walking |
-
-where each of those categories is the collection of many different and specific actions.
-
-E.g. *Gaming* includes Boxing, Shooting Gun, Playing Golf, Playing Baseball just to cite a few.
-
-## Results
-
-| Action | Martinez [1] | Ours - single branch |  Ours - dual branch |
-|--------|--------------|---------------|---------------------|
-| Gaming | 109.6 | 138.3 | 56.0 |
-| Gesticulating | 105.4 | 108.5 | 50.2 |
-| Greeting | 119.3 | 100.3 | 44.6 |
-| Lower Stretching | 125.8 | 133.3 | 51.1 |
-| Patting | 93.0 | 117.8 | 59.4 |
-| Reacting | 119.7 | 175.6 | 60.8 |
-| Talking | 111.1 | 93.5 | 43.9 |
-| Upper Stretching | 124.5 | 129.0 | 53.9 |
-| Walking |  130.5 | 131.9 | 57.7 |
-| **All (mm)** | 122.1 | 130.4 | **58.2** |
-
-[1] *Julieta Martinez, Rayat Hossain, Javier Romero, and James JLittle. A simple yet effective baseline for 3d human pose estimation. In Proceedings of the International Conference on Computer Vision (ICCV), 2017*
-## License
-
-See the LICENSE file for details.
