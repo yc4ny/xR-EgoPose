@@ -17,14 +17,14 @@ Once you have downloaded all the tar.gz files, run
 python utils/extract_data.py --input {path of the downloaded tar.gz zip files} --output {path to extracted files}
 ```
 
-Please create folders 
+Please create folders:
 
 ```
 data/TrainSet
 data/ValSet
 data/TestSet
 ```
-and put the extracted output folders according to the set type as shown below. 
+Then, put the extracted output folders according to the set type as shown below. 
 
 |Train-set| Test-set | Val-set |
 |---------|----------|---------|
