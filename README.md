@@ -75,7 +75,7 @@ TestSet
 
 ## Training - 2D Heatmap Module
 
-![img](doc/architecture_2d.png)
+![img](doc/architecture_2d.jpg)
 
 To train the 2D Heatmap joint estimation module, run
 ```
