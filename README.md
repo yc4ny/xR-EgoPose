@@ -20,9 +20,9 @@ python utils/extract_data.py --input {path of the downloaded tar.gz zip files} -
 Please create folders:
 
 ```
-data/TrainSet
-data/ValSet
-data/TestSet
+/TrainSet
+/ValSet
+/TestSet
 ```
 Then, put the extracted output folders according to the set type as shown below. 
 
@@ -50,7 +50,7 @@ Then, put the extracted output folders according to the set type as shown below.
 |male_011_f_s | | |
 |male_014_a_a | | |
 
-The organized folder structure of dataset should look like this: 
+The organized folder structure of dataset should look something like this: 
 
 ```
 TrainSet
@@ -73,4 +73,13 @@ TestSet
 ```
 
 
-### Actions
+## Training - 2D Heatmap Module
+
+![img](doc/architecture_2d.png)
+
+To train the 2D Heatmap joint estimation module, run
+```
+python train.py --training_type train2d --gpu {gpu id} --log_dir {experiments/Train2d} --load_model {for resuming training from checkpoint}
+```
+
+You can also download the pretrained checkpoint from this [link](https://drive.google.com/drive/folders/1vAmK83MO3UvVd52OQ3X6G8gPQhClZHL0?usp=sharing). The checkpoint is located under '''Train2d''' folder. 
