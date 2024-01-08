@@ -77,10 +77,10 @@ TestSet
 
 ![img](doc/architecture_2d.jpg)
 
-To train the 2D Heatmap joint estimation module, run
+To train the 2D Heatmap Estimation Module, run
 ```
 python train.py --training_type train2d --gpu {gpu id} --log_dir {experiments/Train2d} --load_model {for resuming training from checkpoint}
 ```
 
-You can also download the pretrained checkpoint from this [link](https://drive.google.com/drive/folders/1vAmK83MO3UvVd52OQ3X6G8gPQhClZHL0?usp=sharing). The checkpoint is located under '''Train2d''' folder. 
+You can also download the pretrained checkpoint from this [link](https://drive.google.com/drive/folders/1vAmK83MO3UvVd52OQ3X6G8gPQhClZHL0?usp=sharing). The checkpoint is located under *Train2d* folder. 
 
