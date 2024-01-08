@@ -2,7 +2,7 @@
 
 The *x*R-EgoPose Dataset has been introduced in the paper ["*x*R-EgoPose: Egocentric 3D Human Pose from an HMD Camera"](http://openaccess.thecvf.com/content_ICCV_2019/papers/Tome_xR-EgoPose_Egocentric_3D_Human_Pose_From_an_HMD_Camera_ICCV_2019_paper.pdf) (ICCV 2019, oral). It is a dataset of ~380 thousand photo-realistic *egocentric*  camera images in a variety of indoor and  outdoor spaces.
 
-![img](doc/teaser.png)
+![img](doc/teaser.jpg)
 
 
 The code contained in this repository is a PyTorch implementation of the data loader with additional evaluation functions for comparison.
