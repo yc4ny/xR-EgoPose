@@ -79,7 +79,7 @@ TestSet
 
 To train the 2D Heatmap Estimation Module based on Resnet101 Architecture, run:
 ```
-python train.py --training_type train2d --gpu {gpu id} --log_dir {experiments/Train2d} --load_model {for resuming training from checkpoint}
+python train.py --training_type train2d --gpu {gpu id} --log_dir {experiments/Train2d} 
 ```
 Training is done for 3 Epochs and approximately takes ~2 hours on a single 3090 GPU. 
 
@@ -90,7 +90,7 @@ You can also download the pretrained checkpoint from this [link](https://drive.g
 ![img](doc/architecture_3d.jpg)
 To train the 3D Lifting Module, run:
 ```
-python train.py --training_type train3d --gpu {gpu id} --log_dir {experiments/Train3d} --load_model {for resuming training from checkpoint}
+python train.py --training_type train3d --gpu {gpu id} --log_dir {experiments/Train3d}
 ```
 Training is done for 3 Epochs and approximately takes ~2 hours on a single 3090 GPU. 
 
@@ -100,7 +100,7 @@ You can also download the pretrained checkpoint from this [link](https://drive.g
 
 To finetune the 2D Heatmap and 3D Lifting Module into a single model, run: 
 ```
-python train.py --training_type finetune --gpu {gpu id} --log_dir {experiments/Finetune} --load_2d_model {path to trained 2D Heatmap Module} --load_3d_model {poath to trained 3D Pose Lifting Module}  --load_model {for resuming training from checkpoint}
+python train.py --training_type finetune --gpu {gpu id} --log_dir {experiments/Finetune} --load_2d_model {path to trained 2D Heatmap Module} --load_3d_model {poath to trained 3D Pose Lifting Module}
 ```
 Training is done for 3 Epochs and approximately takes ~2 hours on a single 3090 GPU. 
 
