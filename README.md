@@ -121,5 +121,5 @@ The visualization includes the original image with the overlay of predicted 3d j
 
 ## References
 Base code is adapted from xR-Egopose's official repository.
-Part of the code is referenced and adapted from these users: 
-@twice154, @ahuard0, @FloralZhao, @jiangyutong. 
+Some parts of the implementation is referenced and adapted from these users: 
+@twice154, @ahuard0, @FloralZhao, @jiangyutong. Thanks!
