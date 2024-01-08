@@ -9,8 +9,13 @@ The code contained in this repository is a PyTorch implementation of training an
 
 ## Downloading the *x*R-EgoPose Dataset
 
-Download the official data set from the [official repository](https://github.com/facebookresearch/xR-EgoPose/releases/tag/v1.0)
+Download the official data set from the [official repository](https://github.com/facebookresearch/xR-EgoPose/releases/tag/v1.0).
+The authors provided the downloaded script but it seems to be broken and does not download all the files. It is recommended to download the zip files from the provided link manually.
 
+Once you have downloaded all the tar.gz files, run 
+```
+python utils/extract_data.py --input {path of the downloaded tar.gz zip files} --output {path to extracted files}
+```
 Character names in the dataset follow the convention **gender**\_**id**\_**body-type**\_**height**
 
 - *gender*: male/female
