@@ -31,6 +31,8 @@ import yaml
 from easydict import EasyDict as edict
 from torchvision import transforms as transforms
 import pdb
+from io import BytesIO
+from PIL import Image
 
 LOGGER = ConsoleLogger("Demo", 'test')
 
@@ -38,7 +40,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description="demo script")
     parser.add_argument('--gpu', default='0', type=str)
     parser.add_argument('--load_model', type=str, default = "checkpoints/Finetune/model_best.tar")
-    parser.add_argument('--data', default='test', type=str)  # "train", "val", "test"
+    parser.add_argument('--data', default='test', type=str)
+    parser.add_argument('--save_dir', default="demo_output", type=str)
     args = parser.parse_args()
 
     return args
@@ -95,8 +98,6 @@ def show3Dpose(channels, ax, gt, mm=True):
     ax.set_yticks([])
     ax.set_zticks([])
 
-    # ax.get_xaxis().set_ticklabels([])
-    # ax.get_yaxis().set_ticklabels([])
     ax.set_xticklabels([])
     ax.set_yticklabels([])
     ax.set_zticklabels([])
@@ -104,14 +105,14 @@ def show3Dpose(channels, ax, gt, mm=True):
 
     # Get rid of the panes (actually, make them white)
     white = (1.0, 1.0, 1.0, 0.0)
-    ax.w_xaxis.set_pane_color(white)
-    ax.w_yaxis.set_pane_color(white)
+    ax.xaxis.set_pane_color(white) 
+    ax.yaxis.set_pane_color(white)  
     # Keep z pane
 
     # Get rid of the lines in 3d
-    ax.w_xaxis.line.set_color(white)
-    ax.w_yaxis.line.set_color(white)
-    ax.w_zaxis.line.set_color(white)
+    ax.xaxis.line.set_color(white) 
+    ax.yaxis.line.set_color(white) 
+    ax.zaxis.line.set_color(white)  
 
 
 def main():
@@ -168,7 +169,11 @@ def main():
     plt.axis('off')
     subplot_idx = 1
 
+    if not os.path.exists(args.save_dir): 
+        os.makedirs(args.save_dir) 
+
     with torch.no_grad():
+        index = 0
         for it, (img, p2d, p3d, heatmap, action) in enumerate(data_loader):
             img = img.to(device)
             p3d = p3d.to(device)
@@ -179,13 +184,38 @@ def main():
             y_output = p3d_hat.data.cpu().numpy()
             y_target = p3d.data.cpu().numpy()
             for i in range(len(y_output)):
-                print("MPJPE: " + str(MPJPE(y_output[i], y_target[i])) + " mm")
+                print(f"Output {index} -" +  " MPJPE: " + str(MPJPE(y_output[i], y_target[i])) + " mm")
                 ax = fig.add_subplot(111, projection='3d')
                 show3Dpose(p3d[i].cpu().numpy(), ax, True)
                 show3Dpose(p3d_hat[i].detach().cpu().numpy(), ax, False)
-                plt.savefig(f"output_{i}.png")
-                
-    
+                # Capture the plot as an image
+                buf = BytesIO()
+                plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0)
+                buf.seek(0)
+                plot_image = np.array(Image.open(buf))
 
+                # Convert plot_image from RGBA to RGB (discard alpha channel)
+                plot_image = plot_image[:, :, :3]
+
+                # Process the img tensor
+                tensor_image = ((np.transpose(img[i].cpu().numpy(), (1, 2, 0)) * 0.5 + 0.5) * 255)[:, :, ::-1].astype(np.uint8)
+
+                # Resize images to the same height if necessary
+                h1, w1, _ = tensor_image.shape
+                h2, w2, _ = plot_image.shape
+                if h1 != h2:
+                    # Resize plot image to match the height of the tensor image
+                    plot_image = cv2.resize(plot_image, (int(w2 * h1 / h2), h1))
+
+                # Concatenate images horizontally
+                concatenated_image = np.hstack((tensor_image, plot_image))
+
+                # Save the concatenated image
+                cv2.imwrite(os.path.join(args.save_dir,f"output_{index}.jpg" ), concatenated_image)
+                index += 1
+
+                # Clear the current plot to avoid overlap in the next iteration
+                plt.clf()
+                
 if __name__ == "__main__":
     main()
