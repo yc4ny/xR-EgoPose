@@ -16,12 +16,15 @@ Once you have downloaded all the tar.gz files, run
 ```
 python utils/extract_data.py --input {path of the downloaded tar.gz zip files} --output {path to extracted files}
 ```
-Character names in the dataset follow the convention **gender**\_**id**\_**body-type**\_**height**
 
-- *gender*: male/female
-- *id*: integer
-- *body-type*: a/f (average/full)
-- *height*: a/s (average/short)
+Please create folders 
+
+```
+data/TrainSet
+data/ValSet
+data/TestSet
+```
+and put the extracted output folders according to the set type as shown below. 
 
 |Train-set| Test-set | Val-set |
 |---------|----------|---------|
@@ -47,9 +50,7 @@ Character names in the dataset follow the convention **gender**\_**id**\_**body-
 |male_011_f_s | | |
 |male_014_a_a | | |
 
-### Structure
-
-For each set and for each character the structure is identical, and structured as follows
+The organized folder structure of dataset should look like this: 
 
 ```
 TrainSet
@@ -64,16 +65,12 @@ TrainSet
 │   │   	└── worldp
 │   ├── ...
 │   └── env 03
-└── ...
+│ 
+ValSet
+│  
+│  
+TestSet 
 ```
 
-Frame information is organized in different folders, each containing one file per frame
-
-- depth: 8-bit png per frame
-- json: json file with camera and pose information 
-- objectId: semantic segmentation
-- rgba: 8-bit png per frame
-- rot: json file with joint rotations
-- worldp: world position per pixel
 
 ### Actions
