@@ -1,3 +1,4 @@
+# Code adapted from @FloralZhao
 import torch.nn as nn
 import torch
 from utils import config
