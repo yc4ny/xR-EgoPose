@@ -152,7 +152,8 @@ class Mocap(BaseDataset):
         return len(self.index[self.ROOT_DIRS[0]])
 
 heatmap_size = (int(config.data.heatmap_size[0]), int(config.data.heatmap_size[1]))
-# heatmap_size = (368, 368)
+
+# Code adapted from @FloralZhao
 def joint2heatmap(p2d, sigma=2, heatmap_type='gaussian'):
     '''
     Args:
