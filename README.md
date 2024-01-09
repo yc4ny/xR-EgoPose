@@ -139,12 +139,32 @@ The visualization includes the original image with the overlay of predicted 3d j
 
 To run inference on your custom data or other datasets, run:
 ```
-python inference.py --gpu {gpu id} --load_model {path to trained finetuned model} --input_dir{path to folder containing images} --save_dir {path of output folder of visualizations}
+python inference.py --gpu {gpu id} --load_model {path to trained finetuned model} --input_dir {path to folder containing images} --save_dir {path of output folder of visualizations}
 ```
 
 Since the model is fully trained solely on the xR-EgoPose synthetic dataset, results may not be as expected due to the domain gap. 
 
-## References
+## References & Citation
+```
+@inproceedings{tome2019xr,
+  title={xR-EgoPose: Egocentric 3D Human Pose from an HMD Camera},
+  author={Tome, Denis and Peluse, Patrick and Agapito, Lourdes and Badino, Hernan},
+  booktitle={Proceedings of the IEEE International Conference on Computer Vision},
+  pages={7728--7738},
+  year={2019}
+}
+@ARTICLE{tome2020self,
+  author={D. {Tome} and T. {Alldieck} and P. {Peluse} and G. {Pons-Moll} and L. {Agapito} and H. {Badino} and F. {De la Torre}},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  title={SelfPose: 3D Egocentric Pose Estimation from a Headset Mounted Camera},
+  year={2020},
+  volume={},
+  number={},
+  pages={1-1},
+  doi={10.1109/TPAMI.2020.3029700}
+}
+```
+
 Base code is adapted from xR-Egopose's official repository.
 The base Resnet101 code is adapted from Microsoft Research Bin Xiao (Bin.Xiao@microsoft.com).
 Some parts of the implementation is referenced and adapted from these users: 
