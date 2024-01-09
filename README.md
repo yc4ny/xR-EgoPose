@@ -72,6 +72,17 @@ ValSet
 TestSet 
 ```
 
+## Environment Setup 
+
+Install and Activate Anaconda Environment 
+ ```
+  conda create -n venv_xrego python=3.7
+  conda activate venv_xrego
+ ```
+Install Pytorch
+ ```
+pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
+ ```
 
 ## Training - 2D Heatmap Module
 
