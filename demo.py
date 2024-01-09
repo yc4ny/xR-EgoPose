@@ -12,7 +12,7 @@ from torchvision import transforms
 from base import SetType
 import dataset.transform as trsf
 from dataset import Mocap
-from utils import config, ConsoleLogger
+from utils import config
 from utils import evaluate, io
 import argparse
 import os
@@ -21,9 +21,7 @@ from model import encoder_decoder
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 import cv2
-from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import yaml
 from easydict import EasyDict as edict
@@ -174,33 +172,19 @@ def main():
                 ax = fig.add_subplot(111, projection='3d')
                 show3Dpose(p3d[i].cpu().numpy(), ax, True)
                 show3Dpose(p3d_hat[i].detach().cpu().numpy(), ax, False)
-                # Capture the plot as an image
                 buf = BytesIO()
                 plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0)
                 buf.seek(0)
                 plot_image = np.array(Image.open(buf))
-
-                # Convert plot_image from RGBA to RGB (discard alpha channel)
                 plot_image = plot_image[:, :, :3]
-
-                # Process the img tensor
                 tensor_image = ((np.transpose(img[i].cpu().numpy(), (1, 2, 0)) * 0.5 + 0.5) * 255)[:, :, ::-1].astype(np.uint8)
-
-                # Resize images to the same height if necessary
                 h1, w1, _ = tensor_image.shape
                 h2, w2, _ = plot_image.shape
                 if h1 != h2:
-                    # Resize plot image to match the height of the tensor image
                     plot_image = cv2.resize(plot_image, (int(w2 * h1 / h2), h1))
-
-                # Concatenate images horizontally
                 concatenated_image = np.hstack((tensor_image, plot_image))
-
-                # Save the concatenated image
                 cv2.imwrite(os.path.join(args.save_dir,f"output_{index}.jpg" ), concatenated_image)
                 index += 1
-
-                # Clear the current plot to avoid overlap in the next iteration
                 plt.clf()
                 
 if __name__ == "__main__":
