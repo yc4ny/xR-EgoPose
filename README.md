@@ -166,6 +166,6 @@ Since the model is fully trained solely on the xR-EgoPose synthetic dataset, res
 ```
 
 Base code is adapted from xR-Egopose's official repository.
-The base Resnet101 code is adapted from Microsoft Research Bin Xiao (Bin.Xiao@microsoft.com).
-Some parts of the implementation is referenced and adapted from these users: 
+The base Resnet code is brought from Microsoft Research Bin Xiao (Bin.Xiao@microsoft.com).
+Some parts of the implementation, ideas are referenced and adapted from these users: 
 @twice154, @ahuard0, @FloralZhao, @jiangyutong. Thanks!
