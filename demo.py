@@ -8,7 +8,6 @@ Demo code
 """
 from torch.utils.data import DataLoader
 import torch
-import torchvision
 from torchvision import transforms
 from base import SetType
 import dataset.transform as trsf
@@ -24,13 +23,11 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import cv2
-import pprint
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import yaml
 from easydict import EasyDict as edict
 from torchvision import transforms as transforms
-import pdb
 from io import BytesIO
 from PIL import Image
 
