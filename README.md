@@ -119,7 +119,7 @@ python demo.py --gpu {gpu id} --load_model {path to trained finetuned model} --d
 Make sure to load the finetuned model as model path. The default data is set to the testing set. 
 The visualization includes the original image with the overlay of predicted 3d joints in orange and the ground truth 3d joints in blue. The terminal prints the MPJPE error in mm. 
 
-## Inference on your Data 
+## Running Inference on your Custom Data
 
 To run inference on your custom data or other datasets, run:
 ```
