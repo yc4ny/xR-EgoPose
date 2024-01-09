@@ -110,7 +110,7 @@ On a single 3090 GPU, training takes approximately 40 minutes per epoch.
 You can also download the pretrained checkpoint from this [link](https://drive.google.com/drive/folders/1vAmK83MO3UvVd52OQ3X6G8gPQhClZHL0?usp=sharing). The checkpoint is located under *Finetune* folder. 
 
 ## Evaluation: Demo on the Test Dataset
-
+![img](doc/demo_vis.jpg)
 In order to qualitatively and quantitavely evaluate the performance of the model, run the demo:
 ```
 python demo.py --gpu {gpu id} --load_model {path to trained finetuned model} --data{type of data to test on: train, test, val} --save_dir {path of output folder of visualizations}
