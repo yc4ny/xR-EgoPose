@@ -34,8 +34,6 @@ import pdb
 from io import BytesIO
 from PIL import Image
 
-LOGGER = ConsoleLogger("Demo", 'test')
-
 def parse_args():
     parser = argparse.ArgumentParser(description="demo script")
     parser.add_argument('--gpu', default='0', type=str)
@@ -120,7 +118,6 @@ def main():
     args = parse_args()
     print('Starting demo...')
     device = torch.device(f"cuda:{args.gpu}")
-    LOGGER.info((args))
 
     # ------------------- Data loader -------------------
 
@@ -138,12 +135,6 @@ def main():
         batch_size=16,
         shuffle=config.data_loader.shuffle,
         num_workers=8)
-
-    # ------------------- Evaluation -------------------
-
-    eval_body = evaluate.EvalBody()
-    eval_upper = evaluate.EvalUpperBody()
-    eval_lower = evaluate.EvalLowerBody()
 
     # ------------------- Model -------------------
     with open('model/model.yaml') as fin:
@@ -166,8 +157,6 @@ def main():
     autoencoder.eval()
 
     fig = plt.figure(figsize=(19.2, 10.8))
-    plt.axis('off')
-    subplot_idx = 1
 
     if not os.path.exists(args.save_dir): 
         os.makedirs(args.save_dir) 
