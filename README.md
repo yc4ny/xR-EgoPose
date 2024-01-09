@@ -119,6 +119,15 @@ python demo.py --gpu {gpu id} --load_model {path to trained finetuned model} --d
 Make sure to load the finetuned model as model path. The default data is set to the testing set. 
 The visualization includes the original image with the overlay of predicted 3d joints in orange and the ground truth 3d joints in blue. The terminal prints the MPJPE error in mm. 
 
+## Inference on your Data 
+
+To run inference on your custom data or other datasets, run:
+```
+python inference.py --gpu {gpu id} --load_model {path to trained finetuned model} --input_dir{path to folder containing images} --save_dir {path of output folder of visualizations}
+```
+
+Since the model is fully trained solely on the xR-EgoPose synthetic dataset, results may not be as expected due to the domain gap. 
+
 ## References
 Base code is adapted from xR-Egopose's official repository.
 The base Resnet101 code is adapted from Microsoft Research Bin Xiao (Bin.Xiao@microsoft.com).
