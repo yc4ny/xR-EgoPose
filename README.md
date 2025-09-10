@@ -72,6 +72,25 @@ ValSet
 TestSet 
 ```
 
+### ⚠️ Important Dataset Note
+
+When downloading the dataset from Facebook Research’s official repository
+, the data sequence female_001_a_a is incomplete. Some files are missing, which causes mismatches between the number of files in different subfolders. For correct training, the counts of files in these subfolders must always match:
+
+- `rgba`  
+- `rot`  
+- `worldp`  
+- `objectId`  
+- `json`  
+- `depth`  
+
+If the counts are not equal, training will fail.
+
+**Fix:**  
+- The simplest solution is to **remove the entire `female_001_a_a` folder** from your dataset.  
+- Alternatively, manually prune the data so that each of the above folders has the **same number of files**, ensuring consistent pairs across all modalities.
+
+
 ## Environment Setup 
 
 Install Conda Environment 
