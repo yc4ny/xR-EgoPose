@@ -100,7 +100,7 @@ python train.py --training_type train2d --gpu {gpu id} --log_dir {experiments/Tr
 Training is done for 3 Epochs, 7.0GB of VRAM is needed for training.
 On a single 3090 GPU, training takes approximately 30-40 minutes per epoch. 
 
-You can also download the pretrained checkpoint from this [link](https://drive.google.com/drive/folders/1vAmK83MO3UvVd52OQ3X6G8gPQhClZHL0?usp=sharing). The checkpoint is located under *Train2d* folder. 
+You can also download the pretrained checkpoint from this [`experiments/Train2D/`](./experiments/Train2D).
 
 ## Training - 3D Pose Lifting Module
 
@@ -112,7 +112,7 @@ python train.py --training_type train3d --gpu {gpu id} --log_dir {experiments/Tr
 Training is done for 3 Epochs, 3.0GB of VRAM is needed for training.
 On a single 3090 GPU, training takes approximately 25-35 minutes per epoch. 
 
-You can also download the pretrained checkpoint from this [link](https://drive.google.com/drive/folders/1vAmK83MO3UvVd52OQ3X6G8gPQhClZHL0?usp=sharing). The checkpoint is located under *Train3d* folder. 
+You can also download the pretrained checkpoint from this [`experiments/Train3D/`](./experiments/Train3D/).
 
 ## Finetuning 2D Heatmap & 3D Lifting Module
 
@@ -123,7 +123,7 @@ python train.py --training_type finetune --gpu {gpu id} --log_dir {experiments/F
 Training is done for 3 Epochs, 10GB of VRAM is needed for training. 
 On a single 3090 GPU, training takes approximately 40 minutes per epoch. 
 
-You can also download the pretrained checkpoint from this [link](https://drive.google.com/drive/folders/1vAmK83MO3UvVd52OQ3X6G8gPQhClZHL0?usp=sharing). The checkpoint is located under *Finetune* folder. 
+You can also download the pretrained checkpoint from this [`experiments/Finetune/`](./experiments/Finetune/).
 
 ## Evaluation: Demo on the Test Dataset
 ![img](doc/demo_vis.jpg)
