@@ -172,16 +172,6 @@ Since the model is fully trained solely on the xR-EgoPose synthetic dataset, res
   pages={7728--7738},
   year={2019}
 }
-@ARTICLE{tome2020self,
-  author={D. {Tome} and T. {Alldieck} and P. {Peluse} and G. {Pons-Moll} and L. {Agapito} and H. {Badino} and F. {De la Torre}},
-  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
-  title={SelfPose: 3D Egocentric Pose Estimation from a Headset Mounted Camera},
-  year={2020},
-  volume={},
-  number={},
-  pages={1-1},
-  doi={10.1109/TPAMI.2020.3029700}
-}
 ```
 
 Base code is adapted from xR-Egopose's official repository.
